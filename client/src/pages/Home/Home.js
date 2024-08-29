@@ -3,7 +3,7 @@ import styles from './Home.module.css'
 export default function home() {
   return (
     <div className={styles.title}>
-      ברוך הבא למערכת ניהול ייצור יין
+      ברוך הבא למערכת חוות היין
     </div>
   )
 }
