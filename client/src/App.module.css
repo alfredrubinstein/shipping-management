@@ -1,0 +1,15 @@
+.app {
+    font-family: Arial, sans-serif;
+    color: #000850;
+}
+
+h1 {
+    text-align: center;
+    color: #000a54;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em;
+    }
+}
