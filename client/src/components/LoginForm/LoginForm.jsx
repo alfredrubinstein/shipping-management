@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import styles from './LoginForm.module.css'; // Import module.css
+import styles from './LoginForm.module.css'; 
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -21,22 +21,22 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.loginForm}> {/* Apply the loginForm class */}
+    <form onSubmit={handleSubmit} className={styles.loginForm}> 
       <input
         type="text"
-        placeholder="Username"
+        placeholder="שם משתמש"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className={styles.inputField} // Apply the inputField class
+        className={styles.inputField} 
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="סיסמה"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className={styles.inputField} // Apply the inputField class
+        className={styles.inputField} 
       />
-      <button type="submit" className={styles.submitButton}>  {/* Apply the submitButton class */}
+      <button type="submit" className={styles.submitButton}> 
         Login
       </button>
     </form>

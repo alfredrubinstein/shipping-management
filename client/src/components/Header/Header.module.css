@@ -1,3 +1,7 @@
+a{
+    color:white;
+    text-decoration: none;
+}
 .header {
     background-color: #000619;
     padding: 10px 20px;
@@ -13,14 +17,15 @@
 }
 
 .navItem {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 10px;
 }
 
 .navItem:hover {
-    background-color: #939292;
+    background-color: #ff0000;
     border-radius: 5px;
+
 }
 
 .logoutButton {
@@ -40,6 +45,14 @@
     .navList {
         flex-direction: column;
         align-items: center;
+        flex-wrap: wrap;
+        max-height: 200px;
         padding: 0;
+        
+        
+    }
+    .navList li:last-child {
+        margin-top: 60px;
+        margin-bottom: 60px;        
     }
 }

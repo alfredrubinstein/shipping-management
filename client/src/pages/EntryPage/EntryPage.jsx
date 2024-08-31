@@ -1,10 +1,11 @@
 import React from 'react';
 import EntryForm from '../../components/EntryForm/EntryForm';
+import styles from './EntryPage.module.css';
 
 const EntryPage = () => {
     return (
-        <div>
-            <h1>מערכת כניסה</h1>
+        <div className={styles.container}>
+            <h1 className={styles.title}>מערכת כניסה</h1>
             <EntryForm />
         </div>
     );

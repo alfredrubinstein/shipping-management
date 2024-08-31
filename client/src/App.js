@@ -8,7 +8,9 @@ import EntryPage from './pages/EntryPage/EntryPage';
 import GrapeReceptionPage from './pages/GrapeReceptionPage/GrapeReceptionPage';
 import LaboratoryPage from './pages/LaboratoryPage/LaboratoryPage';
 import GeneralDataPage from './pages/GeneralDataPage/GeneralDataPage';
-import styles from './App.module.css';
+import KasrutPage from './pages/KashrutPage/KashrutPage';
+import DirectorPage from './pages/DirectorPage/DirectorPage';
+import VineYard from './pages/VineYard/VineYard';
 
 function App() {
     return (
@@ -21,7 +23,11 @@ function App() {
                 <Route path="/entrada" element={<EntryPage />} />
                 <Route path="/recibimiento" element={<GrapeReceptionPage />} />
                 <Route path="/laboratorio" element={<LaboratoryPage />} />
+                 <Route path="/vineyard" element={<VineYard />} />
                 <Route path="/general" element={<GeneralDataPage />} />
+                <Route path="/kashrut" element={<KasrutPage />} />
+                 <Route path="/director" element={<DirectorPage />} />
+
             </Routes>
         </Router>
     );

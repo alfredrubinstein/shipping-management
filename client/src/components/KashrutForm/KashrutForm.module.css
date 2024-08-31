@@ -1,5 +1,6 @@
-.registerForm {
-    max-width: 400px;
+
+.entryForm {
+    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -7,18 +8,11 @@
     background-color: #000138;
 }
 
-.inputField{
-    width: 95%;
+.inputField {
+    width: 96%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.selectField {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
 }
 
@@ -37,22 +31,8 @@
 }
 
 @media (max-width: 768px) {
-    .registerForm {
+    .entryForm {
         margin: 20px;
         padding: 15px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -18,6 +18,10 @@ const Header = () => {
                 <li className={styles.navItem}><Link to="/recibimiento">קבלת ענבים</Link></li>
                 <li className={styles.navItem}><Link to="/laboratorio">מעבדה</Link></li>
                 <li className={styles.navItem}><Link to="/general">הודעות</Link></li>
+                <li className={styles.navItem}><Link to="/vineyard">מערכת כרם</Link></li>
+                <li className={styles.navItem}><Link to="/kashrut">כשרות</Link></li>
+                <li className={styles.navItem}><Link to="/director">מערכת מינהל</Link></li>
+                <li className={styles.navItem}><Link to="/register">רישום</Link></li>
                 <li><button className={styles.logoutButton} onClick={handleLogout}>Logout</button></li>
             </ul>
         </nav>

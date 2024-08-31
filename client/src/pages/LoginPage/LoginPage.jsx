@@ -1,12 +1,15 @@
 import React from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
     return (
-        <div>
-            <h1>רישום</h1>
+        <>
+            <h1>כניסה</h1>
+        <div className={styles.container}>
             <LoginForm />
         </div>
+        </>
     );
 };
 
