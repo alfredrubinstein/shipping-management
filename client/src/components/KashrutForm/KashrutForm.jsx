@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const KashrutForm = () => {
   const [formData, setFormData] = useState({
+    shipmentNumber: '',
     licensePlateNumber: '',
     numberOfShipments: '',
     permitNumber: '',
@@ -35,6 +36,7 @@ const KashrutForm = () => {
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
+        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
         { name: 'licensePlateNumber', placeholder: 'מספר רישוי משאית', type: 'text' },
         { name: 'numberOfShipments', placeholder: 'מספר משלוח', type: 'number' },
         { name: 'permitNumber', placeholder: 'מספר אישור', type: 'number' },

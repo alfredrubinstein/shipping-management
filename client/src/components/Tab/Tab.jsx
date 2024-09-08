@@ -4,6 +4,7 @@ import styles from './Tab.module.css'
 export default function Tab(props) {
   return (
     <div className={styles.TabContainer}>
+      {props.shipment}- 
       {props.time}
     </div>
   )

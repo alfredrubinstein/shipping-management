@@ -29,6 +29,13 @@ const LaboratoryForm = () => {
   return (
     <>
    <form onSubmit={handleSubmit} className={styles.formContainer}> 
+   <input
+        type="text"
+        name="shipmentNumber"
+        placeholder="Shipment Number"
+        onChange={handleChange}
+        className={styles.inputField}
+      />
       <input
         type="text"
         name="ph"

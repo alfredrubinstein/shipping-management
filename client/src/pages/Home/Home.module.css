@@ -9,7 +9,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -0%);
-animation: colorchange 20s infinite;
+animation: colorchange 10s infinite;
 }
 @keyframes colorchange {
     0% {
@@ -34,8 +34,19 @@ animation: colorchange 20s infinite;
     text-align: center;
     color: black;
     text-shadow: 1px 5px 5px #000000;
- 
-    /* animation: rotate 2s infinite; */
+ animation : fontchange 2s infinite;
+}
+@keyframes fontchange {
+    0% {
+        font-size: 5rem;
+    }
+    50% {
+        font-size: 5.2rem;
+    }
+
+    100% {
+        font-size: 5rem;
+    }
 }
 
 

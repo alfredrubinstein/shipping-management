@@ -4,6 +4,7 @@ import styles from '../forms.module.css';
 
 const VineyardForm = () => {
   const [formData, setFormData] = useState({
+    shipmentNumber: '',
     vineyardName: '',
     vineyardLocation: '',
     contactPerson: '',
@@ -58,6 +59,7 @@ const VineyardForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
+      {name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text'},
         { name: 'vineyardName', placeholder: 'שם היקב', type: 'text' },
         { name: 'vineyardLocation', placeholder: 'מיקום היקב', type: 'text' },
         { name: 'contactPerson', placeholder: 'אחראי יקב', type: 'text' },

@@ -4,18 +4,18 @@ import styles from './Tabs.module.css'
 
 export default function Tabs() {
   //mock data
-  const times = [
-    { id: 1, time: '10:00' },
-    { id: 2, time: '11:00' },
-    { id: 3, time: '12:00' },
-    { id: 4, time: '13:00' },
-    { id: 5, time: '14:00' }
-  ]
+  const shipments = [
+    { id: 1, time: '10:00', shipmentNumber: 'SHIP123', vehicleNumber: 'CAR456' },
+    { id: 2, time: '11:00', shipmentNumber: 'SHIP456', vehicleNumber: 'CAR789' },
+    { id: 3, time: '12:00', shipmentNumber: 'SHIP789', vehicleNumber: 'CAR123' },
+    { id: 4, time: '13:00', shipmentNumber: 'SHIP123', vehicleNumber: 'CAR456' },
+    { id: 5, time: '14:00', shipmentNumber: 'SHIP456', vehicleNumber: 'CAR789' }
+  ];
   
   return (
     <div className={styles.tabsContainer}>
-      {times.map((time) => (
-     <Tab time={time.time}/>
+      {shipments.map((shipment) => (
+     <Tab shipment={shipment.shipmentNumber} time={shipment.time}/>
       ))}
     </div>
   )

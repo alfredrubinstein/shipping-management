@@ -5,8 +5,8 @@ import styles from '../forms.module.css';
 const GrapeReceptionForm = ({addNewTime}) => {
   // const {addNewTime}=props;
   const [formData, setFormData] = useState({
+    shipmentNumber:'',
     conductor: '',
-    numberOfShipments:'',
     vineyardArea: '',
     vineyard: '',
     grapeVarieties: '',
@@ -62,8 +62,8 @@ const GrapeReceptionForm = ({addNewTime}) => {
     <>
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
+        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'number' },
         { name: 'conductor', placeholder: 'נֶהָג', type: 'text' },
-        { name: 'numberOfShipments', placeholder: 'מספר משלוח', type: 'number' },
         { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
         { name: 'vineyard', placeholder: 'מספר חלקה', type: 'text' },
         { name: 'containers', placeholder: 'מספר אמבטיות', type: 'text' },

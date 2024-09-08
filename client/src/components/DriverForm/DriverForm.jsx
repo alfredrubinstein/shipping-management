@@ -4,6 +4,7 @@ import styles from '../forms.module.css';
 
 const DriverForm = () => {
   const [formData, setFormData] = useState({
+    shipmentNumber: '',
     driverName: '',
     vehiclePlate: '',
     contactNumber: '',
@@ -38,6 +39,7 @@ const DriverForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
+       { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
         { name: 'driverName', placeholder: 'שם נהג', type: 'text' },
         { name: 'vehiclePlate', placeholder: 'מספר רישוי', type: 'text' },
         { name: 'contactNumber', placeholder: 'טלפון ליצירת קשר', type: 'tel' },

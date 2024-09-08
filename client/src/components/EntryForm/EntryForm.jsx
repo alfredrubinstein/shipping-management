@@ -4,6 +4,7 @@ import styles from '../forms.module.css';
 
 const EntryForm = () => {
   const [formData, setFormData] = useState({
+shipmentNumber: '',
     licensePlateNumber: '',
     fullTruckWeight: '',
     emptyTruckWeight: '',
@@ -34,6 +35,7 @@ const EntryForm = () => {
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
+               { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
         { name: 'licensePlateNumber', placeholder: 'מספר רישוי משאית', type: 'text' },
         { name: 'fullTruckWeight', placeholder: 'משקל משאית מלאה', type: 'number' },
         { name: 'emptyTruckWeight', placeholder: 'משקל משאית ריקה', type: 'number' },

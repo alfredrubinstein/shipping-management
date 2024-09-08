@@ -7,9 +7,13 @@ const Header = () => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
 
-    const handleLogout = () => {
+    const handleLogoutMobile = () => {
         localStorage.removeItem('token');
         setOpen(!open);
+        navigate('/login');
+    };
+    const handleLogoutComputer = () => {
+        localStorage.removeItem('token');
         navigate('/login');
     };
 
@@ -49,7 +53,7 @@ const Header = () => {
                             </Link>
                         </li>
                     ))}
-                    <li><button className={styles.logoutButton} onClick={handleLogout}>Logout</button></li>
+                    <li><button className={styles.logoutButton} onClick={handleLogoutMobile}>Logout</button></li>
                 </ul>
             </div>
 
@@ -64,7 +68,7 @@ const Header = () => {
                             {/* <div className={styles.separador}>aaa</div> */}
                         </li>
                     ))}
-                    <li><button className={styles.logoutButton} onClick={handleLogout}>Logout</button></li>
+                    <li><button className={styles.logoutButton} onClick={handleLogoutComputer}>Logout</button></li>
                 </ul>
             </nav>
         </>
