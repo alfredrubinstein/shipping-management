@@ -44,6 +44,13 @@ const VineyardForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Imprimir datos del formulario en la consola
+    console.log('Form data:', formData);
+
+    // Guardar datos en localStorage
+    localStorage.setItem('vineyardFormData', JSON.stringify(formData));
+
     try {
       const token = localStorage.getItem('token');
       await axios.post('/api/vinedo-uvas', formData, {
@@ -59,7 +66,7 @@ const VineyardForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
-      {name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text'},
+        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
         { name: 'vineyardName', placeholder: 'שם היקב', type: 'text' },
         { name: 'vineyardLocation', placeholder: 'מיקום היקב', type: 'text' },
         { name: 'contactPerson', placeholder: 'אחראי יקב', type: 'text' },
@@ -82,13 +89,13 @@ const VineyardForm = () => {
       ))}
 
       <select
-      className={styles.selectField}
+        className={styles.selectField}
         name="grapeVariety"
         value={formData.grapeVariety}
         onChange={handleChange}
         required
       >
-        <option className={styles.selectField} value="" disabled>בחר סוג ענבים</option>
+        <option value="" disabled>בחר סוג ענבים</option>
         {grapeVarieties.map((variety) => (
           <option key={variety} value={variety}>
             {variety}

@@ -10,10 +10,16 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Username:', username);
+    console.log('Password:', password);
+
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+
     try {
       const res = await axios.post('/api/login', { username, password });
-      localStorage.setItem('token', res.data.token);
-      navigate('/');
+      localStorage.setItem('token', res.data.token); 
+      navigate('/'); 
     } catch (err) {
       console.error(err);
       alert('Login failed');

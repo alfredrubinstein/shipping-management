@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from '../forms.module.css';
+import useArrayStore from '../../store';
+
 
 const EntryForm = () => {
   const [formData, setFormData] = useState({
-shipmentNumber: '',
+    shipmentNumber: '',
     licensePlateNumber: '',
     fullTruckWeight: '',
     emptyTruckWeight: '',
   });
+
+  const { addElement } = useArrayStore((state) => ({
+    addElement: state.addElement
+  }));
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +24,26 @@ shipmentNumber: '',
     });
   };
 
+  const handleOnClick = () => {
+    if (!formData.shipmentNumber) {
+      alert('אנא הכנס מספר משלוח');
+      return;
+    }
+    const shipmentNumber = formData.shipmentNumber;
+    const time = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    
+    addElement({ shipmentNumber, time });
+    
+    console.log(`Agregado al array: shipmentNumber=${shipmentNumber}, time=${time}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log('Form data:', formData);
+
+    localStorage.setItem('entryData', JSON.stringify(formData));
+
     try {
       const token = localStorage.getItem('token');
       await axios.post('/api/entrada-fabrica', formData, {
@@ -35,7 +59,7 @@ shipmentNumber: '',
   return (
     <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
-               { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
+        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' , required: true},
         { name: 'licensePlateNumber', placeholder: 'מספר רישוי משאית', type: 'text' },
         { name: 'fullTruckWeight', placeholder: 'משקל משאית מלאה', type: 'number' },
         { name: 'emptyTruckWeight', placeholder: 'משקל משאית ריקה', type: 'number' },
@@ -50,10 +74,11 @@ shipmentNumber: '',
           className={styles.inputField}
         />
       ))}
+
       <button type="submit" className={styles.submitButton}>
         רשום כניסה
       </button>
-      <button type="button" className={styles.newTabButton}>
+      <button type="button" className={styles.newTabButton} onClick={handleOnClick}>
         פתח כרטיסיה חדשה
       </button>
     </form>

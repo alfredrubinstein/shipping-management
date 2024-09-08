@@ -21,6 +21,8 @@ const RegisterForm = () => {
   };
 
   return (
+    <>
+    <div className={styles.title}>רישום משתמש חדש</div>
     <form onSubmit={handleSubmit} className={styles.formContainer}> 
       <input
         type="text"
@@ -42,11 +44,13 @@ const RegisterForm = () => {
         <option value={2}>עמדת קבלת ענבים</option>
         <option value={3}>עמדת מעבדה</option>
         <option value={4}>מנהל מערכת</option>
+        <option value={5}>משגיח</option>
       </select>
       <button type="submit" className={styles.submitButton}> 
         Register
       </button>
     </form>
+    </>
   );
 };
 

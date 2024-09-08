@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Director.module.css';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
 ;
 
 const DirectorPage = () => {
@@ -72,10 +73,11 @@ const DirectorPage = () => {
 
   return (
     <>
-    <div className={styles.continer}>
+    <div className={styles.container}>
       <h1 className={styles.title}>מערכת מנהל 👮‍♂️</h1>
-      <div className={styles.formContainer}>
+    <RegisterForm/>
           <div className={styles.formTitle}>חיפוש משלוחים</div>
+      <div className={styles.formContainer}>
         <form onSubmit={handleSearch} className={styles.searchForm}>
           {[
             { name: 'startDate', label: 'תאריך התחלה', type: 'date' },

@@ -1,40 +1,33 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from '../forms.module.css';
+import useArrayStore from '../../store';
 
-const GrapeReceptionForm = ({addNewTime}) => {
-  // const {addNewTime}=props;
+const GrapeReceptionForm = ({ addNewTime }) => {
   const [formData, setFormData] = useState({
-    shipmentNumber:'',
+    shipmentNumber: '',
     conductor: '',
     vineyardArea: '',
     vineyard: '',
-    grapeVarieties: '',
+    grapeVariety: '',
     temperature: '',
     containers: '',
     arrivalTime: '',
     scrambled: false,
     rotten: false,
+    sulfitAdded: false,
+    ensimesAdded: false,
     comments: '',
   });
 
-  const grapeVarieties = [
-    'קריניאן',
-    'מרלו',
-    'קברנה סוביניון',
-    'שרדונה',
-    'סירה',
-    'ויונייה',
-    'גרנאש',
-    'פינו נואר',
-    'ריזלינג',
-    'מוסקט',
-    'טמפרניו',
-    'זינפנדל',
-    'פטיט סירה',
-    'גווירצטרמינר'
-  ];
+  const { addElement } = useArrayStore((state) => ({
+    addElement: state.addElement
+  }));
 
+  const grapeVarieties = [
+    'קריניאן', 'מרלו', 'קברנה סוביניון', 'שרדונה', 'סירה', 'ויונייה', 'גרנאש', 
+    'פינו נואר', 'ריזלינג', 'מוסקט', 'טמפרניו', 'זינפנדל', 'פטיט סירה', 'גווירצטרמינר'
+  ];
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -44,8 +37,26 @@ const GrapeReceptionForm = ({addNewTime}) => {
     });
   };
 
+  const handleOnClick = () => {
+    if (!formData.shipmentNumber) {
+      alert('אנא הכנס מספר משלוח');
+      return;
+    }
+    const shipmentNumber = formData.shipmentNumber;
+    const time = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    
+    addElement({ shipmentNumber, time });
+    
+    console.log(`Agregado al array: shipmentNumber=${shipmentNumber}, time=${time}`);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log('Form data:', formData);
+
+    localStorage.setItem('grapeReceptionData', JSON.stringify(formData));
+
     try {
       const token = localStorage.getItem('token');
       await axios.post('/api/recibimiento-uvas', formData, {
@@ -59,10 +70,9 @@ const GrapeReceptionForm = ({addNewTime}) => {
   };
 
   return (
-    <>
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
-        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'number' },
+        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'number' , required: true},
         { name: 'conductor', placeholder: 'נֶהָג', type: 'text' },
         { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
         { name: 'vineyard', placeholder: 'מספר חלקה', type: 'text' },
@@ -81,14 +91,14 @@ const GrapeReceptionForm = ({addNewTime}) => {
         />
       ))}
 
-<select
-      className={styles.selectField}
+      <select
+        className={styles.selectField}
         name="grapeVariety"
         value={formData.grapeVariety}
         onChange={handleChange}
         required
       >
-        <option  value="" disabled>בחר סוג ענבים</option>
+        <option value="" disabled>בחר סוג ענבים</option>
         {grapeVarieties.map((variety) => (
           <option key={variety} value={variety}>
             {variety}
@@ -96,7 +106,6 @@ const GrapeReceptionForm = ({addNewTime}) => {
         ))}
       </select>
 
-      
       <textarea
         name="comments"
         placeholder="הודאות מיוחדות"
@@ -105,29 +114,28 @@ const GrapeReceptionForm = ({addNewTime}) => {
         className={styles.textareaField}
       />
 
-
       {[
         { name: 'scrambled', label: 'זנים מעורבים' },
         { name: 'rotten', label: 'רקבונות' },
+        { name: 'sulfitAdded', label: 'התוסף סולפית' },
+        { name: 'ensimesAdded', label: 'הוכנסו הנזימים' },
       ].map((checkbox) => (
         <label key={checkbox.name}>
-          <input 
+          <input
             type="checkbox"
             name={checkbox.name}
             checked={formData[checkbox.name]}
             onChange={handleChange}
-            />
+          />
           {checkbox.label}
         </label>
       ))}
-      
 
       <button type="submit" className={styles.submitButton}>רשום קבלה</button>
-      <button type="button" className={styles.newTabButton} onClick={addNewTime}>
-      פתח כרטיסיה חדשה
-    </button>
+      <button type="button" className={styles.newTabButton} onClick={handleOnClick}>
+        פתח כרטיסיה חדשה
+      </button>
     </form>
-    </>
   );
 };
 

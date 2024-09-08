@@ -31,7 +31,6 @@ const Header = () => {
         {to: '/driver', text: 'מערכת נהגים'},
         {to: '/vineyard', text: 'מערכת כרם'},
         {to: '/director', text: 'מערכת מנהל'},
-        {to: '/register', text: 'רישום משתמש חדש'},
         {to: '/kashrut', text: 'כשרות'},
         {to: '/general', text: 'הודעות'}
     ];

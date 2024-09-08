@@ -1,15 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 .title{
     font-weight: bold;
     font-size: 5rem;
-    margin-top: 1rem;
-    text-align: center;
     color: black;
     text-shadow: 2px 2px 4px #000000;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -0%);
 animation: colorchange 10s infinite;
+text-align: center;
 }
 @keyframes colorchange {
     0% {

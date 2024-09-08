@@ -24,6 +24,13 @@ const DriverForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Imprimir datos del formulario en la consola
+    console.log('Form data:', formData);
+
+    // Guardar datos en localStorage
+    localStorage.setItem('driverFormData', JSON.stringify(formData));
+
     try {
       const token = localStorage.getItem('token');
       await axios.post('/api/chofer-uvas', formData, {
@@ -39,7 +46,7 @@ const DriverForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
-       { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
+        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
         { name: 'driverName', placeholder: 'שם נהג', type: 'text' },
         { name: 'vehiclePlate', placeholder: 'מספר רישוי', type: 'text' },
         { name: 'contactNumber', placeholder: 'טלפון ליצירת קשר', type: 'tel' },
@@ -58,7 +65,6 @@ const DriverForm = () => {
           required
         />
       ))}
-
 
       <textarea
         name="comments"
