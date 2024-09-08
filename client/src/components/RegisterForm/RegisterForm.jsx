@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import styles from './RegisterForm.module.css';
+import styles from '../forms.module.css';
 
 const RegisterForm = () => {
   const [username, setUsername] = useState('');
@@ -21,22 +21,23 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.registerForm}> 
+    <form onSubmit={handleSubmit} className={styles.formContainer}> 
       <input
         type="text"
-        placeholder="Username"
+        placeholder="שם משתמש"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         className={styles.inputField} 
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="סיסמה"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         className={styles.inputField} 
       />
-      <select value={role} onChange={(e) => setRole(e.target.value)} className={styles.selectField}> 
+      <label className={styles.labelField} htmlFor="roleSelect">בחר סוג הרשאה...</label>
+      <select id="roleSelect" value={role} onChange={(e) => setRole(e.target.value)} className={styles.selectField}> 
         <option value={1}>עמדת כניסה</option>
         <option value={2}>עמדת קבלת ענבים</option>
         <option value={3}>עמדת מעבדה</option>

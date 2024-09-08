@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from './LaboratoryForm.module.css'; 
+import styles from '../forms.module.css'; 
 
 const LaboratoryForm = () => {
   const [chemicalData, setChemicalData] = useState({});
@@ -27,7 +27,8 @@ const LaboratoryForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.laboratoryForm}> 
+    <>
+   <form onSubmit={handleSubmit} className={styles.formContainer}> 
       <input
         type="text"
         name="ph"
@@ -45,7 +46,11 @@ const LaboratoryForm = () => {
       <button type="submit" className={styles.submitButton}>  
         Register Data
       </button>
+<button type="button" className={styles.newTabButton}>
+        Open New Tab
+      </button>
     </form>
+   </>
   );
 };
 

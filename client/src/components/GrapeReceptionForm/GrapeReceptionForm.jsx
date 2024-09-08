@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from './GrapeReceptionForm.module.css';
+import styles from '../forms.module.css';
 
-const GrapeReceptionForm = () => {
+const GrapeReceptionForm = ({addNewTime}) => {
+  // const {addNewTime}=props;
   const [formData, setFormData] = useState({
     conductor: '',
     numberOfShipments:'',
     vineyardArea: '',
     vineyard: '',
-    grapeType: '',
+    grapeVarieties: '',
     temperature: '',
     containers: '',
     arrivalTime: '',
     scrambled: false,
-    rotten: false
+    rotten: false,
+    comments: '',
   });
+
+  const grapeVarieties = [
+    'קריניאן',
+    'מרלו',
+    'קברנה סוביניון',
+    'שרדונה',
+    'סירה',
+    'ויונייה',
+    'גרנאש',
+    'פינו נואר',
+    'ריזלינג',
+    'מוסקט',
+    'טמפרניו',
+    'זינפנדל',
+    'פטיט סירה',
+    'גווירצטרמינר'
+  ];
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -39,14 +59,14 @@ const GrapeReceptionForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.grapeReceptionForm}>
+    <>
+    <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
         { name: 'conductor', placeholder: 'נֶהָג', type: 'text' },
         { name: 'numberOfShipments', placeholder: 'מספר משלוח', type: 'number' },
         { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
         { name: 'vineyard', placeholder: 'מספר חלקה', type: 'text' },
         { name: 'containers', placeholder: 'מספר אמבטיות', type: 'text' },
-        { name: 'grapeType', placeholder: 'סוג ענבים', type: 'text' },
         { name: 'temperature', placeholder: 'טֶמפֶּרָטוּרָה', type: 'number' },
         { name: 'arrivalTime', placeholder: 'כניסה לעמדה', type: 'time' },
       ].map((field) => (
@@ -61,6 +81,29 @@ const GrapeReceptionForm = () => {
         />
       ))}
 
+<select
+      className={styles.selectField}
+        name="grapeVariety"
+        value={formData.grapeVariety}
+        onChange={handleChange}
+        required
+      >
+        <option  value="" disabled>בחר סוג ענבים</option>
+        {grapeVarieties.map((variety) => (
+          <option key={variety} value={variety}>
+            {variety}
+          </option>
+        ))}
+      </select>
+
+      
+      <textarea
+        name="comments"
+        placeholder="הודאות מיוחדות"
+        value={formData.comments}
+        onChange={handleChange}
+        className={styles.textareaField}
+      />
 
 
       {[
@@ -77,9 +120,14 @@ const GrapeReceptionForm = () => {
           {checkbox.label}
         </label>
       ))}
+      
 
       <button type="submit" className={styles.submitButton}>רשום קבלה</button>
+      <button type="button" className={styles.newTabButton} onClick={addNewTime}>
+      פתח כרטיסיה חדשה
+    </button>
     </form>
+    </>
   );
 };
 

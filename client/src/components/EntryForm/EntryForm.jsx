@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styles from './EntryForm.module.css';
+import styles from '../forms.module.css';
 
 const EntryForm = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +32,7 @@ const EntryForm = () => {
   };
 
   return (
-    <form className={styles.entryForm} onSubmit={handleSubmit}>
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
         { name: 'licensePlateNumber', placeholder: 'מספר רישוי משאית', type: 'text' },
         { name: 'fullTruckWeight', placeholder: 'משקל משאית מלאה', type: 'number' },
@@ -50,6 +50,9 @@ const EntryForm = () => {
       ))}
       <button type="submit" className={styles.submitButton}>
         רשום כניסה
+      </button>
+      <button type="button" className={styles.newTabButton}>
+        פתח כרטיסיה חדשה
       </button>
     </form>
   );

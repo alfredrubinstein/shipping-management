@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './KashrutForm.module.css'
+import styles from '../forms.module.css'
 import axios from 'axios';
 
 const KashrutForm = () => {
@@ -33,7 +33,7 @@ const KashrutForm = () => {
   };
 
   return (
-    <form className={styles.entryForm} onSubmit={handleSubmit}>
+    <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
         { name: 'licensePlateNumber', placeholder: 'מספר רישוי משאית', type: 'text' },
         { name: 'numberOfShipments', placeholder: 'מספר משלוח', type: 'number' },
@@ -51,6 +51,9 @@ const KashrutForm = () => {
       ))}
       <button type="submit" className={styles.submitButton}>
         אשר משלוח
+      </button>
+      <button type="button" className={styles.newTabButton}>
+        פתח כרטיסיה חדשה
       </button>
     </form>
   );

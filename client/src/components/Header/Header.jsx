@@ -1,30 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Header = () => {
     const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        setOpen(!open);
         navigate('/login');
     };
 
+    const handleOpen = () => {
+        setOpen(!open);
+    };
+
+    const path = window.location.pathname;
+
+    const linkList = [
+        {to: '/', text: 'בית'},
+        {to: '/entrada', text: 'כניסה ליקב'},
+        {to: '/recibimiento', text: 'קבלת ענבים'},
+        {to: '/laboratorio', text: 'מעבדה'},
+        {to: '/driver', text: 'מערכת נהגים'},
+        {to: '/vineyard', text: 'מערכת כרם'},
+        {to: '/director', text: 'מערכת מנהל'},
+        {to: '/register', text: 'רישום משתמש חדש'},
+        {to: '/kashrut', text: 'כשרות'},
+        {to: '/general', text: 'הודעות'}
+    ];
+
     return (
-        <nav className={styles.header}>
-            <ul className={styles.navList}>
-                <li className={styles.navItem}><Link to="/">בית</Link></li>
-                <li className={styles.navItem}><Link to="/entrada">כניסה ליקב</Link></li>
-                <li className={styles.navItem}><Link to="/recibimiento">קבלת ענבים</Link></li>
-                <li className={styles.navItem}><Link to="/laboratorio">מעבדה</Link></li>
-                <li className={styles.navItem}><Link to="/general">הודעות</Link></li>
-                <li className={styles.navItem}><Link to="/vineyard">מערכת כרם</Link></li>
-                <li className={styles.navItem}><Link to="/kashrut">כשרות</Link></li>
-                <li className={styles.navItem}><Link to="/director">מערכת מינהל</Link></li>
-                <li className={styles.navItem}><Link to="/register">רישום</Link></li>
-                <li><button className={styles.logoutButton} onClick={handleLogout}>Logout</button></li>
-            </ul>
-        </nav>
+        <>
+            {/* Icono de hamburguesa para móviles */}
+            <div className={styles.mobileHeader} onClick={handleOpen}>
+                <GiHamburgerMenu />
+            </div>
+
+            {/* Menú desplegable para móviles */}
+            <div className={`${styles.mobileMenu} ${open ? styles.open : styles.close}`}>
+                <ul className={styles.navList}>
+                    {linkList.map((link, index) => (
+                        <li key={index}>
+                            <Link className={path === link.to ? styles.active : styles.navItem} to={link.to} onClick={handleOpen}>
+                                {link.text}
+                            </Link>
+                        </li>
+                    ))}
+                    <li><button className={styles.logoutButton} onClick={handleLogout}>Logout</button></li>
+                </ul>
+            </div>
+
+            {/* Menú para computadoras */}
+            <nav className={styles.computerHeader}>
+                <ul className={styles.navList}>
+                    {linkList.map((link, index) => (
+                        <li key={index}>
+                            <Link className={path === link.to ? styles.active : styles.navItem} to={link.to}>
+                                {link.text}
+                            </Link>
+                            {/* <div className={styles.separador}>aaa</div> */}
+                        </li>
+                    ))}
+                    <li><button className={styles.logoutButton} onClick={handleLogout}>Logout</button></li>
+                </ul>
+            </nav>
+        </>
     );
 };
 

@@ -1,0 +1,73 @@
+
+.formContainer {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #000138;
+    color: white;
+    text-align: right;
+}
+
+.inputField {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+.selectField{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #9b9b9b;
+}
+
+.submitButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #45a049;
+}
+.title{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.textareaField{
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+.searchButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.labelField{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .formContainer {
+        margin: 20px;
+        padding: 15px;
+    }
+}

@@ -1,58 +1,133 @@
-a{
-    color:white;
+a {
+    color: white;
     text-decoration: none;
 }
-.header {
-    background-color: #000619;
+
+.computerHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #40475e;
+    height: 80px;
+    padding: 10px 10px;
+}
+.separador {
+    margin: 0 10px;
+    background-color: red;
+}
+.mobileHeader {
+    display: none;
+    background-color: #40475e;
     padding: 10px 20px;
+    display: none;
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+    font-size: 30px;
+    color: white;
+    /* width: 100vw; */
+}
+
+.mobileMenu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #40475e; */
+    position: absolute;
+    top: 50px;
+    /* width: 100vw; */
+    z-index: 1000;
+}
+
+.open {
+    display: flex;
+}
+
+.close {
+    display: none;
 }
 
 .navList {
     display: flex;
     justify-content: space-between;
     list-style: none;
+    background-color: rgb(84, 82, 121);
     padding: 0;
     margin: 0;
-    color: white;
+    width: 100vw;
 }
 
 .navItem {
-    color: rgb(255, 255, 255);
+    color: white;
     text-decoration: none;
-    padding: 10px;
+    padding: 1px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .navItem:hover {
-    background-color: #ff0000;
+    background-color: #ff000099;
     border-radius: 5px;
-
 }
 
 .logoutButton {
     background-color: #585858;
     border: none;
     color: white;
-    padding: 10px;
     cursor: pointer;
     border-radius: 20px;
+    padding: 5px 10px;
 }
 
 .logoutButton:hover {
-    background-color: #ff1a1a;
+    background-color: #ff1a1a86;
+    transition: background-color 0.3s;
+}
+
+.active {
+    color: #ff0000;
+    border-radius: 5px;
 }
 
 @media (max-width: 768px) {
+    .computerHeader {
+        display: none;
+    }
+  /* revisar el width anda mal*/
+    .mobileHeader {
+        /* width: 100vw; */
+        display: flex;
+        background-color: #40475e;
+        padding: 10px 20px;
+        justify-content: start;
+        align-items: center;
+        height: 50px;
+        font-size: 30px;
+        color: white;
+    }
     .navList {
+        /* width: 100vw; */
         flex-direction: column;
         align-items: center;
-        flex-wrap: wrap;
-        max-height: 200px;
-        padding: 0;
-        
-        
+        max-height: 250px;
+        padding: 10px 0;
+        margin: 20px 0;
     }
     .navList li:last-child {
-        margin-top: 60px;
-        margin-bottom: 60px;        
+        margin-top: 20px;
+    }
+    .logoutButton {
+        background-color: #585858;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 20px;
+        padding: 5px 10px;
+    }
+    
+    .logoutButton:hover {
+        background-color: #ff1a1a86;
+        transition: background-color 0.3s;
     }
 }

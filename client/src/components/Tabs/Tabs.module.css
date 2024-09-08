@@ -1,0 +1,9 @@
+.tabsContainer{
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(161, 159, 159);
+}
+.tabs{
+}
