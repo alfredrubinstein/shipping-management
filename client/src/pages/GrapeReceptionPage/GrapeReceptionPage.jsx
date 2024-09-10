@@ -3,14 +3,13 @@ import GrapeReceptionForm from '../../components/GrapeReceptionForm/GrapeRecepti
 import Tabs from '../../components/Tabs/Tabs'
 import styles from './GrapeReceptionPage.module.css';
 
-const GrapeReceptionPage = ({addNewTime}) => {
-    // const {addNewTime}=props;
+const GrapeReceptionPage = () => {
     return (
         <>
         <div className={styles.container}>            
         <Tabs/>
         <h1 className={styles.title}>מערכת קבלת ענבים 🍇</h1>
-            <GrapeReceptionForm onClick={addNewTime} />
+            <GrapeReceptionForm />
         </div>
         </>
     );

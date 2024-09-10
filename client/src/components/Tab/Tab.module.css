@@ -11,17 +11,20 @@ display: flex;
     border: 1px solid #000000;
     padding: 3px;
 }
+
 .active{
     border: 1px solid #000000;
     padding: 3px;
     background-color: #fff;
 }
 .remove{
-    color: red;
+    color: rgb(255, 0, 0);
     text-align: center;
     font-size: 10px;
     cursor: pointer;
+    background-color: #e5ff00;
 }
 .remove:hover{
     color: #000;
+    background-color: red;
 }

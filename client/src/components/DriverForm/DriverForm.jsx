@@ -4,8 +4,11 @@ import styles from '../forms.module.css';
 
 const DriverForm = () => {
   const [formData, setFormData] = useState({
+    // kosher: false,
+    // authorized: false,
     shipmentNumber: '',
     driverName: '',
+    typeOfTruck: '',
     vehiclePlate: '',
     contactNumber: '',
     vineyard: '',
@@ -48,6 +51,7 @@ const DriverForm = () => {
       {[
         { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
         { name: 'driverName', placeholder: 'שם נהג', type: 'text' },
+        { name: 'typeOfTruck', placeholder: 'סוג משאית', type: 'text' },
         { name: 'vehiclePlate', placeholder: 'מספר רישוי', type: 'text' },
         { name: 'contactNumber', placeholder: 'טלפון ליצירת קשר', type: 'tel' },
         { name: 'vineyard', placeholder: 'כרם מעמיס', type: 'text' },
@@ -65,6 +69,24 @@ const DriverForm = () => {
           required
         />
       ))}
+
+{/* <label className={styles.labelField}>אישור משגיח</label>
+      <input
+        type="checkbox"
+        name="kosher"
+        value={formData.authorized}
+        onChange={handleChange}
+        className={styles.labelField}
+      />
+
+<label className={styles.labelField}>אישור מנהל</label>
+      <input
+        type="checkbox"
+        name="authorized"
+        value={formData.authorized}
+        onChange={handleChange}
+        className={styles.labelField}
+      /> */}
 
       <textarea
         name="comments"

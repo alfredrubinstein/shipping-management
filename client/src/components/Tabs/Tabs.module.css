@@ -5,5 +5,11 @@
     flex-wrap: wrap;
     background-color: rgb(161, 159, 159);
 }
+.tabsContainer p{
+    color:rgb(84, 0, 0);
+display: flex;
+justify-content: center;
+align-items: center;
+}
 .tabs{
 }

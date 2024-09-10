@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from '../forms.module.css';
+import style from './EntryForm.module.css';
 import useArrayStore from '../../store';
 
 
 const EntryForm = () => {
+
+  const [isAutomatic, setIsAutomatic] = useState(true);
+
   const [formData, setFormData] = useState({
     shipmentNumber: '',
     licensePlateNumber: '',
@@ -12,17 +16,14 @@ const EntryForm = () => {
     emptyTruckWeight: '',
   });
 
+  const handleToggle = () => {
+    setIsAutomatic(!isAutomatic);
+  };
+
   const { addElement } = useArrayStore((state) => ({
     addElement: state.addElement
   }));
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   const handleOnClick = () => {
     if (!formData.shipmentNumber) {
@@ -36,6 +37,15 @@ const EntryForm = () => {
     
     console.log(`Agregado al array: shipmentNumber=${shipmentNumber}, time=${time}`);
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,6 +67,7 @@ const EntryForm = () => {
   };
 
   return (
+    <>
     <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
         { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' , required: true},
@@ -75,13 +86,29 @@ const EntryForm = () => {
         />
       ))}
 
-      <button type="submit" className={styles.submitButton}>
-        רשום כניסה
-      </button>
+
+
+ <div className={style.toggleContainer}>
+        <label className={style.toggleLabel}>
+          {isAutomatic ? 'מערכת על אוטומט' : 'מערכת מופעלת באופן ידני'}
+        </label>
+        <label className={style.switch}>
+          <input type="checkbox" checked={isAutomatic} onChange={handleToggle} />
+          <span className={style.slider}></span>
+        </label>
+        </div>
+
+
+
+
       <button type="button" className={styles.newTabButton} onClick={handleOnClick}>
         פתח כרטיסיה חדשה
       </button>
+      <button type="submit" className={styles.submitButton}>
+        רשום כניסה
+      </button>
     </form>
+    </>
   );
 };
 

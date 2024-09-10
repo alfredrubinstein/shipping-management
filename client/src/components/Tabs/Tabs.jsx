@@ -6,34 +6,34 @@ import useArrayStore from '../../store';
 export default function Tabs() {
   const shipments = useArrayStore((state) => state.array);
 
-  return (
-    <div className={styles.tabsContainer}>
-      {shipments.map((shipment, index) => (
-          <Tab key={index} shipment={shipment.shipmentNumber} time={shipment.time} />
-        )
-      )
-      }
-    </div>
-  );
-}
-
-
-
-
-
-// return (
-//   <div className={styles.tabsContainer}>
-//     {shipments.length > 0 ? (
-//       shipments.map((shipment, index) => (
-//         <Tab key={index} shipment={shipment.shipmentNumber} time={shipment.time} />
-//       ))
-//     ) : (
-//       <p>אין כרטיסיות שמורות!</p>  // Muestra un mensaje si no hay datos
-//     )
-//     }
-//   </div>
-// );
+//   return (
+//     <div className={styles.tabsContainer}>
+//       {shipments.map((shipment, index) => (
+//           <Tab key={index} shipment={shipment.shipmentNumber} time={shipment.time} />
+//         )
+//       )
+//       }
+//     </div>
+//   );
 // }
+
+
+
+
+
+return (
+  <div className={styles.tabsContainer}>
+    {shipments.length > 0 ? (
+      shipments.map((shipment, index) => (
+        <Tab key={index} shipment={shipment.shipmentNumber} time={shipment.time} />
+      ))
+    ) : (
+      <p>אין כרטיסיות פתוחות! פתיחת כרטיסיות אפשרית רק מעמדת כניסה ליקב.</p>  
+    )
+    }
+  </div>
+);
+}
 
 
 

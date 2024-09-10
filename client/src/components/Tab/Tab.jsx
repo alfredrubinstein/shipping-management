@@ -8,14 +8,18 @@ export default function Tab(props) {
     removeElement: state.removeElement
   }));
 
-  const handleOnClick = () => {
+  const handleRemove = () => {
     removeElement(props.shipment); 
+  }
+
+  const handleSeleccion = () => {
+    console.log('shipment:', props.shipment);
   }
 
   return (
      <>
-    <div className={styles.TabContainer}>
-     <div className={styles.remove} onClick={handleOnClick}>
+    <div className={styles.TabContainer} onClick={handleSeleccion}>
+     <div className={styles.remove} onClick={handleRemove}>
         <CiCircleRemove />
       </div>
       {props.shipment} - {props.time}

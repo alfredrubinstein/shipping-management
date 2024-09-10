@@ -1,0 +1,85 @@
+{
+    "choferUvas": [
+      {
+        "id": 1,
+        "shipmentNumber": "12345",
+        "driverName": "John Doe",
+        "typeOfTruck": "Semi-trailer",
+        "vehiclePlate": "ABC123",
+        "contactNumber": "+972501234567",
+        "vineyard": "Vineyard A",
+        "departureTime": "08:00",
+        "arrivalTime": "10:00",
+        "comments": "Drive carefully"
+      }
+    ],
+    "entradaFabrica": [
+      {
+        "id": 1,
+        "shipmentNumber": "12345",
+        "licensePlateNumber": "ABC123",
+        "fullTruckWeight": 15000,
+        "emptyTruckWeight": 8000,
+        "isAutomatic": true
+      }
+    ],
+    "recibimientoUvas": [
+      {
+        "id": 1,
+        "shipmentNumber": 12345,
+        "temperature": 22,
+        "arrivalTime": "10:00",
+        "departureTime": "11:00",
+        "receivingTank": "Tank 1",
+        "sentBy": "Vineyard A",
+        "comments": "Mixed quality",
+        "scrambled": false,
+        "rotten": false,
+        "sulfitAdded1": true,
+        "sulfitAdded2": false,
+        "ensimesAdded": true
+      }
+    ],
+    "laboratorio": [
+      {
+        "id": 1,
+        "shipmentNumber": "12345",
+        "ph": 3.5,
+        "sugarLevel": 25,
+        "acidityLevel": 6.0,
+        "alcoholContent": 12.5,
+        "colorIntensity": 8,
+        "aromaProfile": "Fruity"
+      }
+    ],
+    "vinedoUvas": [
+      {
+        "id": 1,
+        "shipmentNumber": "12345",
+        "conductor": "John Doe",
+        "vehiclePlate": "ABC123",
+        "vineyardName": "Vineyard A",
+        "vineyardArea": "Northern",
+        "vineyard": "Plot 5",
+        "contactPerson": "Mike Smith",
+        "containers": 5,
+        "totalWeight": 1000,
+        "contactNumber": "+972501234567",
+        "harvestDate": "2023-09-10T08:00",
+        "shipmentDate": "2023-09-10T09:00",
+        "grapeVariety": "Merlot",
+        "kosher": true,
+        "authorized": true,
+        "comments": "No issues"
+      }
+    ],
+    "users": [
+      {
+        "id": 1,
+        "username": "admin",
+        "password": "admin123",
+        "role": "admin"
+      }
+    ]
+  }
+  

@@ -4,17 +4,23 @@ import styles from '../forms.module.css';
 
 const VineyardForm = () => {
   const [formData, setFormData] = useState({
-    shipmentNumber: '',
-    vineyardName: '',
-    vineyardLocation: '',
-    contactPerson: '',
-    contactNumber: '',
-    grapeVariety: '',
-    harvestDate: '',
-    shipmentDate: '',
-    numberOfContainers: '',
-    totalWeight: '',
-    comments: '',
+  shipmentNumber: '',
+  vineyardName: '',
+  vineyardArea: '',
+  conductor: '',
+  vehiclePlate: '',
+  vineyard: '',
+  containers: '',
+  contactPerson: '',
+  contactNumber: '',
+  grapeVariety: '',
+  harvestDate: '',
+  shipmentDate: '',
+  numberOfContainers: '',
+  totalWeight: '',
+  kosher: false,
+  authorized: false,
+  comments: '',
   });
 
   const grapeVarieties = [
@@ -63,18 +69,23 @@ const VineyardForm = () => {
     }
   };
 
+
+
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
         { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
-        { name: 'vineyardName', placeholder: 'שם היקב', type: 'text' },
-        { name: 'vineyardLocation', placeholder: 'מיקום היקב', type: 'text' },
-        { name: 'contactPerson', placeholder: 'אחראי יקב', type: 'text' },
+        { name: 'conductor', placeholder: 'נֶהָג', type: 'text' },
+        { name: 'vehiclePlate', placeholder: 'מספר רישוי', type: 'text' },
+        { name: 'vineyardName', placeholder: 'שם הכרם', type: 'text' },
+        { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
+        { name: 'vineyard', placeholder: 'מספר חלקה', type: 'text' },
+        { name: 'contactPerson', placeholder: 'אחראי כרם', type: 'text' },
+        { name: 'containers', placeholder: 'מספר אמבטיות', type: 'number' },
+        { name: 'totalWeight', placeholder: 'משקל ענבים', type: 'number' },
         { name: 'contactNumber', placeholder: 'טלפון ליצירת קשר', type: 'tel' },
         { name: 'harvestDate', placeholder: 'שעת בצירה', type: 'time' },
         { name: 'shipmentDate', placeholder: 'שעת משלוח', type: 'time' },
-        { name: 'numberOfContainers', placeholder: 'מספר אמבטיות', type: 'number' },
-        { name: 'totalWeight', placeholder: 'משקל ענבים', type: 'number' },
       ].map((field) => (
         <input
           key={field.name}
@@ -102,6 +113,26 @@ const VineyardForm = () => {
           </option>
         ))}
       </select>
+
+
+      <label className={styles.labelField}>אישור משגיח</label>
+      <input
+        type="checkbox"
+        name="kosher"
+        value={formData.authorized}
+        onChange={handleChange}
+        className={styles.labelField}
+      />
+
+<label className={styles.labelField}>אישור מנהל</label>
+      <input
+        type="checkbox"
+        name="authorized"
+        value={formData.authorized}
+        onChange={handleChange}
+        className={styles.labelField}
+      />
+
 
       <textarea
         name="comments"

@@ -8,14 +8,12 @@ import EntryPage from './pages/EntryPage/EntryPage';
 import GrapeReceptionPage from './pages/GrapeReceptionPage/GrapeReceptionPage';
 import LaboratoryPage from './pages/LaboratoryPage/LaboratoryPage';
 import GeneralDataPage from './pages/GeneralDataPage/GeneralDataPage';
-import KasrutPage from './pages/KashrutPage/KashrutPage';
 import DirectorPage from './pages/DirectorPage/DirectorPage';
 import VineYard from './pages/VineYard/VineYard';
 import DriverPage from './pages/DriverPage/DriverPage';
 
 function App() {
     
-  // onClick={addNewTime}
   const [times, setTimes] = useState([]);
   const addNewTime = () => {
     const newTime = {
@@ -35,11 +33,10 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/entrada" element={<EntryPage />} />
-                <Route path="/recibimiento" element={<GrapeReceptionPage onClick={addNewTime}/>} />
-                <Route path="/laboratorio" element={<LaboratoryPage onClick={addNewTime}/>} />
+                <Route path="/recibimiento" element={<GrapeReceptionPage/>} />
+                <Route path="/laboratorio" element={<LaboratoryPage/>} />
                  <Route path="/vineyard" element={<VineYard />} />
                 <Route path="/general" element={<GeneralDataPage />} />
-                <Route path="/kashrut" element={<KasrutPage onClick={addNewTime}/>} />
                  <Route path="/director" element={<DirectorPage />} />
                  <Route path="/driver" element={<DriverPage />} />
 
