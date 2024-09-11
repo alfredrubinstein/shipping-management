@@ -38,9 +38,7 @@ function App() {
                  <Route path="/vineyard" element={<VineYard />} />
                 <Route path="/general" element={<GeneralDataPage />} />
                  <Route path="/director" element={<DirectorPage />} />
-                 <Route path="/driver" element={<DriverPage />} />
-
-
+                 {/* <Route path="/driver" element={<DriverPage />} /> */}
             </Routes>
         </Router>
     );

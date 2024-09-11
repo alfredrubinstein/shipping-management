@@ -28,7 +28,7 @@ const Header = () => {
         {to: '/entrada', text: 'כניסה ליקב'},
         {to: '/recibimiento', text: 'קבלת ענבים'},
         {to: '/laboratorio', text: 'מעבדה'},
-        {to: '/driver', text: 'מערכת נהגים'},
+        // {to: '/driver', text: 'מערכת נהגים'},
         {to: '/vineyard', text: 'מערכת כרם'},
         {to: '/director', text: 'מערכת מנהל'},
         // {to: '/vinologo', text: 'מערכת ייננים'},

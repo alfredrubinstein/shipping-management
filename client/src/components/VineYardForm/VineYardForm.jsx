@@ -12,10 +12,11 @@ const VineyardForm = () => {
   vineyard: '',
   containers: '',
   contactPerson: '',
-  contactNumber: '',
+  driverPhone: '',
   grapeVariety: '',
   harvestDate: '',
   shipmentDate: '',
+  typeOfTruck:'',
   numberOfContainers: '',
   totalWeight: '',
   kosher: false,
@@ -51,10 +52,8 @@ const VineyardForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Imprimir datos del formulario en la consola
     console.log('Form data:', formData);
 
-    // Guardar datos en localStorage
     localStorage.setItem('vineyardFormData', JSON.stringify(formData));
 
     try {
@@ -81,9 +80,10 @@ const VineyardForm = () => {
         { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
         { name: 'vineyard', placeholder: 'מספר חלקה', type: 'text' },
         { name: 'contactPerson', placeholder: 'אחראי כרם', type: 'text' },
+        { name: 'driverPhone', placeholder: 'טלפון נהג', type: 'tel' },
+        { name: 'typeOfTruck', placeholder: 'סוג משאית', type: 'number' },
         { name: 'containers', placeholder: 'מספר אמבטיות', type: 'number' },
         { name: 'totalWeight', placeholder: 'משקל ענבים', type: 'number' },
-        { name: 'contactNumber', placeholder: 'טלפון ליצירת קשר', type: 'tel' },
         { name: 'harvestDate', placeholder: 'שעת בצירה', type: 'time' },
         { name: 'shipmentDate', placeholder: 'שעת משלוח', type: 'time' },
       ].map((field) => (

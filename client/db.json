@@ -1,18 +1,4 @@
 {
-    "choferUvas": [
-      {
-        "id": 1,
-        "shipmentNumber": "12345",
-        "driverName": "John Doe",
-        "typeOfTruck": "Semi-trailer",
-        "vehiclePlate": "ABC123",
-        "contactNumber": "+972501234567",
-        "vineyard": "Vineyard A",
-        "departureTime": "08:00",
-        "arrivalTime": "10:00",
-        "comments": "Drive carefully"
-      }
-    ],
     "entradaFabrica": [
       {
         "id": 1,
@@ -31,7 +17,7 @@
         "arrivalTime": "10:00",
         "departureTime": "11:00",
         "receivingTank": "Tank 1",
-        "sentBy": "Vineyard A",
+        "sentBy": "Pipeline A",
         "comments": "Mixed quality",
         "scrambled": false,
         "rotten": false,
@@ -62,6 +48,7 @@
         "vineyardArea": "Northern",
         "vineyard": "Plot 5",
         "contactPerson": "Mike Smith",
+        "typeOfTruck": "Semi-trailer",
         "containers": 5,
         "totalWeight": 1000,
         "contactNumber": "+972501234567",

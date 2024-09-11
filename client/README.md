@@ -5,7 +5,7 @@ FORMA DE INICIAR EL JSON SERVER
 json-server --watch db.json
 -------------------------------
 
-
+pagina para chofer y para vinologo desconectadas sin borrar para poder usar en el futuro
 
 
 
