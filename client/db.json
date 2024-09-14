@@ -6,7 +6,7 @@
         "licensePlateNumber": "ABC123",
         "fullTruckWeight": 15000,
         "emptyTruckWeight": 8000,
-        "isAutomatic": true
+        "isAutomatic": false
       }
     ],
     "recibimientoUvas": [
@@ -16,8 +16,8 @@
         "temperature": 22,
         "arrivalTime": "10:00",
         "departureTime": "11:00",
-        "receivingTank": "Tank 1",
-        "sentBy": "Pipeline A",
+        "receivingTank": "B-11",
+        "sentBy": "pp1",
         "comments": "Mixed quality",
         "scrambled": false,
         "rotten": false,
@@ -48,15 +48,16 @@
         "vineyardArea": "Northern",
         "vineyard": "Plot 5",
         "contactPerson": "Mike Smith",
+        "contactNumber": "+972501234567",
         "typeOfTruck": "Semi-trailer",
         "containers": 5,
         "totalWeight": 1000,
-        "contactNumber": "+972501234567",
         "harvestDate": "2023-09-10T08:00",
         "shipmentDate": "2023-09-10T09:00",
+        "isManualHarvest": false,
         "grapeVariety": "Merlot",
-        "kosher": true,
-        "authorized": true,
+        "isKosher": true,
+        "isAuthorized": true,
         "comments": "No issues"
       }
     ],
@@ -64,8 +65,38 @@
       {
         "id": 1,
         "username": "admin",
-        "password": "admin123",
+        "password": "admin",
         "role": "admin"
+      },
+      {
+        "id": 2,
+        "username": "user",
+         "password": "user",
+        "role": "mashguiajTypePermit"
+      },
+      {
+        "id": 3,
+        "username": "u1",
+        "password": "u1",
+        "role": "entryTypePermit"
+      },
+      {
+        "id": 4,
+        "username": "u2",
+        "password": "u2",
+        "role": "receptionTypePermit"
+      },
+      {
+        "id": 5,
+        "username": "u3",
+        "password": "u3",
+        "role": "labTypePermit"
+      },
+      {
+        "id": 6,
+        "username": "u4",
+        "password": "u4",
+        "role": "vineyardTypePermit"
       }
     ]
   }

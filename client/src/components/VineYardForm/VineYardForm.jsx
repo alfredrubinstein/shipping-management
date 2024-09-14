@@ -7,20 +7,21 @@ const VineyardForm = () => {
   shipmentNumber: '',
   vineyardName: '',
   vineyardArea: '',
+  vineyard: '',
+  harvestDate: '',
+  isManualHarvest:'',
+  grapeVariety: '',
+  shipmentDate: '',
   conductor: '',
   vehiclePlate: '',
-  vineyard: '',
   containers: '',
   contactPerson: '',
   driverPhone: '',
-  grapeVariety: '',
-  harvestDate: '',
-  shipmentDate: '',
   typeOfTruck:'',
   numberOfContainers: '',
   totalWeight: '',
-  kosher: false,
-  authorized: false,
+  isKosher: false,
+  isAuthorized: false,
   comments: '',
   });
 
@@ -78,7 +79,7 @@ const VineyardForm = () => {
         { name: 'vehiclePlate', placeholder: 'מספר רישוי', type: 'text' },
         { name: 'vineyardName', placeholder: 'שם הכרם', type: 'text' },
         { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
-        { name: 'vineyard', placeholder: 'מספר חלקה', type: 'text' },
+        { name: 'vineyard', placeholder: 'קוד חלקה', type: 'text' },
         { name: 'contactPerson', placeholder: 'אחראי כרם', type: 'text' },
         { name: 'driverPhone', placeholder: 'טלפון נהג', type: 'tel' },
         { name: 'typeOfTruck', placeholder: 'סוג משאית', type: 'number' },
@@ -98,6 +99,17 @@ const VineyardForm = () => {
           required
         />
       ))}
+<select
+        className={styles.selectField}
+name='isManualHarvest'
+value={formData.isManualHarvest}
+onChange={handleChange}
+required
+>
+<option value="" disabled>בחר סוג בציר</option>
+<option value='true'>ידני</option>
+<option value='false'>מכני</option>
+</select>
 
       <select
         className={styles.selectField}
@@ -118,8 +130,8 @@ const VineyardForm = () => {
       <label className={styles.labelField}>אישור משגיח</label>
       <input
         type="checkbox"
-        name="kosher"
-        value={formData.authorized}
+        name="isKosher"
+        value={formData.isAuthorized}
         onChange={handleChange}
         className={styles.labelField}
       />
@@ -127,8 +139,8 @@ const VineyardForm = () => {
 <label className={styles.labelField}>אישור מנהל</label>
       <input
         type="checkbox"
-        name="authorized"
-        value={formData.authorized}
+        name="isAuthorized"
+        value={formData.isAuthorized}
         onChange={handleChange}
         className={styles.labelField}
       />

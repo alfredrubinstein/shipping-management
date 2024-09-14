@@ -10,7 +10,7 @@ const GrapeReceptionForm = () => {
   arrivalTime: '',
   departureTime: '',
   receivingTank: '',
-  sentBy: '',
+  sentBy:'',
   scrambled: false,
   rotten: false,
   sulfitAdded1: false,
@@ -59,7 +59,6 @@ const GrapeReceptionForm = () => {
         { name: 'arrivalTime', placeholder: 'כניסה לעמדה', type: 'time' },
         { name: 'departureTime', placeholder: 'יציאה מהעמדה', type: 'time' },
         { name: 'receivingTank', placeholder: 'מיכל קבלה', type: 'text' },
-        { name: 'sentBy', placeholder: 'מועבר דרך', type: 'text' },
       ].map((field) => (
         <input
           key={field.name}
@@ -72,6 +71,19 @@ const GrapeReceptionForm = () => {
         />
       ))}
 
+<select 
+name="sentBy"
+value=''
+onChange={handleChange}
+className={styles.selectField}
+>
+<option disabled value={formData.sentBy}>press מקבל</option>
+<option value="press 1">pp1</option>
+<option value="press 2">pp2</option>
+<option value="press 3">pp3</option>
+<option value="press 4">pp4</option>
+<option value="directToTank">ישירות</option>
+</select>
 
       <textarea
         name="comments"
@@ -82,11 +94,11 @@ const GrapeReceptionForm = () => {
       />
 
       {[
-        { name: 'scrambled', label: 'זנים מעורבים' },
-        { name: 'rotten', label: 'רקבונות' },
-        { name: 'sulfitAdded1', label: 'התוסף סולפית 1' },
-        { name: 'sulfitAdded2', label: 'התוסף סולפית 2' },
-        { name: 'ensimesAdded', label: 'הוכנסו הנזימים' },
+        { name: 'scrambled', label: 'זנים מעורבים'},
+        { name: 'rotten', label: 'רקבונות'},
+        { name: 'sulfitAdded1', label: 'התוסף סולפית 1'},
+        { name: 'sulfitAdded2', label: 'התוסף סולפית 2'},
+        { name: 'ensimesAdded', label: 'הוכנסו אנזימים'},
       ].map((checkbox) => (
         <label key={checkbox.name}>
           <input
