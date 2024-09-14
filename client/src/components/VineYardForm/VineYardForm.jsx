@@ -74,30 +74,35 @@ const VineyardForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
-        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' },
-        { name: 'conductor', placeholder: 'נֶהָג', type: 'text' },
-        { name: 'vehiclePlate', placeholder: 'מספר רישוי', type: 'text' },
-        { name: 'vineyardName', placeholder: 'שם הכרם', type: 'text' },
-        { name: 'vineyardArea', placeholder: 'אזור הכרם', type: 'text' },
-        { name: 'vineyard', placeholder: 'קוד חלקה', type: 'text' },
-        { name: 'contactPerson', placeholder: 'אחראי כרם', type: 'text' },
-        { name: 'driverPhone', placeholder: 'טלפון נהג', type: 'tel' },
-        { name: 'typeOfTruck', placeholder: 'סוג משאית', type: 'number' },
-        { name: 'containers', placeholder: 'מספר אמבטיות', type: 'number' },
-        { name: 'totalWeight', placeholder: 'משקל ענבים', type: 'number' },
-        { name: 'harvestDate', placeholder: 'שעת בצירה', type: 'time' },
-        { name: 'shipmentDate', placeholder: 'שעת משלוח', type: 'time' },
+        { name: 'shipmentNumber', label: 'מספר משלוח', type: 'text' },
+        { name: 'conductor', label: 'נֶהָג', type: 'text' },
+        { name: 'vehiclePlate', label: 'מספר רישוי', type: 'text' },
+        { name: 'vineyardName', label: 'שם הכרם', type: 'text' },
+        { name: 'vineyardArea', label: 'אזור הכרם', type: 'text' },
+        { name: 'vineyard', label: 'קוד חלקה', type: 'text' },
+        { name: 'contactPerson', label: 'אחראי כרם', type: 'text' },
+        { name: 'driverPhone', label: 'טלפון נהג', type: 'tel' },
+        { name: 'typeOfTruck', label: 'סוג משאית', type: 'number' },
+        { name: 'containers', label: 'מספר אמבטיות', type: 'number' },
+        { name: 'totalWeight', label: 'משקל ענבים', type: 'number' },
+        { name: 'harvestDate', label: 'שעת בצירה', type: 'time' },
+        { name: 'shipmentDate', label: 'שעת משלוח', type: 'time' },
       ].map((field) => (
+        <>
+        <label key={field.name} className={styles.label}>
+          {field.label}
+        </label>
         <input
           key={field.name}
           type={field.type}
           name={field.name}
-          placeholder={field.placeholder}
+          label={field.label}
           value={formData[field.name]}
           onChange={handleChange}
           className={styles.inputField}
           required
         />
+        </>
       ))}
 <select
         className={styles.selectField}

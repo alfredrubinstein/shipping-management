@@ -6,17 +6,27 @@ import styles from '../forms.module.css';
 const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState(1);
+  const [role, setRole] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/register', { username, password, role });
+      await axios.post('/api/auth/register', { username, password, role });
       navigate('/login');
-    } catch (err) {
-      console.error(err);
-      alert('Registration failed');
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        alert(error.response.data.message || 'Registration failed. Please try again.');
+      } else if (error.request) {
+        // The request was made but no response was received
+        alert('No response received from server. Please try again.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        alert('An error occurred during registration.');
+      }
+      console.error('Registration error:', error);
     }
   };
 
@@ -24,30 +34,40 @@ const RegisterForm = () => {
     <>
     <div className={styles.title}>רישום משתמש חדש</div>
     <form onSubmit={handleSubmit} className={styles.formContainer}> 
+    <label htmlFor="username">שם משתמש:</label>
       <input
         type="text"
-        placeholder="שם משתמש"
+        id='username'
+        // placeholder="שם משתמש"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        required
         className={styles.inputField} 
       />
+                <label htmlFor="password">סיסמה:</label>
       <input
         type="password"
-        placeholder="סיסמה"
+        id='password'
+        // placeholder="סיסמה"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
         className={styles.inputField} 
       />
+      
       <label className={styles.labelField} htmlFor="roleSelect">בחר סוג הרשאה...</label>
-      <select id="roleSelect" value={role} onChange={(e) => setRole(e.target.value)} className={styles.selectField}> 
-        <option value={1}>עמדת כניסה</option>
-        <option value={2}>עמדת קבלת ענבים</option>
-        <option value={3}>עמדת מעבדה</option>
-        <option value={4}>מנהל מערכת</option>
-        <option value={5}>משגיח</option>
+      <select id="roleSelect"
+       value={role} onChange={(e) => setRole(e.target.value)} className={styles.selectField}> 
+        <option value={'entryTypePermit'}>עמדת כניסה</option>
+        <option value={'receptionTypePermit'}>עמדת קבלת ענבים</option>
+        <option value={'labTypePermit'}>עמדת מעבדה</option>
+        <option value={'admin'}>מנהל מערכת</option>
+        <option value={'mashguiajTypePermit'}>משגיח</option>
+        <option value={'vineyardTypePermit'}>אחראי כרם</option>
+        
       </select>
       <button type="submit" className={styles.submitButton}> 
-        Register
+      רשום משתשמש
       </button>
     </form>
     </>

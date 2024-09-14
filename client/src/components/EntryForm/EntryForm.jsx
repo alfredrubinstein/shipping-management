@@ -65,16 +65,18 @@ const EntryForm = () => {
       alert('Error al registrar la entrada');
     }
   };
-
   return (
     <>
     <form className={styles.formContainer} onSubmit={handleSubmit}>
       {[
-        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' , required: true},
-        { name: 'licensePlateNumber', placeholder: 'מספר רישוי משאית', type: 'text' },
-        { name: 'fullTruckWeight', placeholder: 'משקל משאית מלאה', type: 'number' },
-        { name: 'emptyTruckWeight', placeholder: 'משקל משאית ריקה', type: 'number' },
+        { name: 'shipmentNumber', label: 'מספר משלוח', type: 'text' , required: true},
+        { name: 'licensePlateNumber', label: 'מספר רישוי משאית', type: 'text' },
+        { name: 'fullTruckWeight', label: 'משקל משאית מלאה', type: 'number' },
+        { name: 'emptyTruckWeight', label: 'משקל משאית ריקה', type: 'number' },
       ].map((field) => (
+        <><label key={field.name} className={styles.label}>
+          {field.label}
+        </label>
         <input
           key={field.name}
           type={field.type}
@@ -84,6 +86,7 @@ const EntryForm = () => {
           onChange={handleChange}
           className={styles.inputField}
         />
+        </>
       ))}
 
 

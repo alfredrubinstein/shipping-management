@@ -58,16 +58,22 @@ const LaboratoryForm = () => {
     <div className={style.LaboratoryForm}>
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {chemicalData.map((input, index) => (
-        <input
+<>
+<label key={input.name} className={style.textToLeft} > 
+{input.name.charAt(0).toUpperCase() + input.name.slice(1).replace(/([A-Z])/g, ' $1')}
+</label>
+
+<input
           key={input.name}
           type={input.type}
           name={input.name}
-          placeholder={input.name.charAt(0).toUpperCase() + input.name.slice(1).replace(/([A-Z])/g, ' $1')}
+          // placeholder={input.name.charAt(0).toUpperCase() + input.name.slice(1).replace(/([A-Z])/g, ' $1')}
           value={input.value}
           onChange={(e) => handleChange(index, e)}
           className={styles.inputField}
           id={style.rtl}
         />
+        </>
       ))}
 
       <button type="submit" className={styles.submitButton} >

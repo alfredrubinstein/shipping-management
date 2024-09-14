@@ -54,12 +54,15 @@ const GrapeReceptionForm = () => {
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {[
-        { name: 'shipmentNumber', placeholder: 'מספר משלוח', type: 'text' ,value:'', required: true},
-        { name: 'temperature', placeholder: 'טֶמפֶּרָטוּרָה', type: 'number' },
-        { name: 'arrivalTime', placeholder: 'כניסה לעמדה', type: 'time' },
-        { name: 'departureTime', placeholder: 'יציאה מהעמדה', type: 'time' },
-        { name: 'receivingTank', placeholder: 'מיכל קבלה', type: 'text' },
+        { name: 'shipmentNumber', label: 'מספר משלוח', type: 'text' ,value:'', required: true},
+        { name: 'temperature', label: 'טֶמפֶּרָטוּרָה', type: 'number' },
+        { name: 'arrivalTime', label: 'כניסה לעמדה', type: 'time' },
+        { name: 'departureTime', label: 'יציאה מהעמדה', type: 'time' },
+        { name: 'receivingTank', label: 'מיכל קבלה', type: 'text' },
       ].map((field) => (
+        <><label key={field.name} className={styles.label}>
+          {field.label}
+        </label>
         <input
           key={field.name}
           type={field.type}
@@ -69,7 +72,7 @@ const GrapeReceptionForm = () => {
           onChange={handleChange}
           className={styles.inputField}
         />
-      ))}
+    </>  ))}
 
 <select 
 name="sentBy"
