@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/database');
+const grapeRoutes = require('./routes/grapeRoutes');
+
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
@@ -17,6 +19,11 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api',grapeRoutes);
+
+app.use((req, res, next) => {
+  res.status(404).json({ message: `Route ${req.url} Not Found` });
+});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

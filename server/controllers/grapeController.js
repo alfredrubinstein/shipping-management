@@ -1,5 +1,5 @@
 const Grape = require('../models/Grape');
-const grapeService = require('../services/grapeService');
+const grapeService = require('../services/grapeServices');
 
 exports.createGrape = async (req, res) => {
   try {

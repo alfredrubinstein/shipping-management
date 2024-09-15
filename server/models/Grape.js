@@ -48,6 +48,6 @@ const grapeSchema = new mongoose.Schema({
     isAuthorized: Boolean,
     comments: String
   }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Grape', grapeSchema);
