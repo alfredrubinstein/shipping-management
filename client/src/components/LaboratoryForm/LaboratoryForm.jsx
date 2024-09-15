@@ -59,7 +59,7 @@ const LaboratoryForm = () => {
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       {chemicalData.map((input, index) => (
 <>
-<label key={input.name} className={style.textToLeft} > 
+<label key={input.name} className={style.textToLeft} htmlFor={input.name}> 
 {input.name.charAt(0).toUpperCase() + input.name.slice(1).replace(/([A-Z])/g, ' $1')}
 </label>
 
@@ -67,11 +67,10 @@ const LaboratoryForm = () => {
           key={input.name}
           type={input.type}
           name={input.name}
-          // placeholder={input.name.charAt(0).toUpperCase() + input.name.slice(1).replace(/([A-Z])/g, ' $1')}
           value={input.value}
           onChange={(e) => handleChange(index, e)}
           className={styles.inputField}
-          id={style.rtl}
+          id={input.name}
         />
         </>
       ))}

@@ -14,7 +14,7 @@ departureTime: Time input for the departure time (placeholder: "שעת יציא�
 arrivalTime: Time input for the estimated arrival time (placeholder: "שעת הגעה משוערת")
 comments: Textarea for any special instructions (placeholder: "הודאות מיוחדות")
 
-await axios.post('/api/chofer-uvas', formData, {
+await axios.post('/api/chofer-grape', formData, {
 headers: { Authorization: token },
 });
 --------------------------
@@ -50,7 +50,7 @@ sulfitAdded1: Checkbox for "Sulfite Added 1" (label: "התוסף סולפית 1"
 sulfitAdded2: Checkbox for "Sulfite Added 2" (label: "התוסף סולפית 2")
 ensimesAdded: Checkbox for "Enzymes Added" (label: "הוכנסו הנזימים")
 
-axios.post('/api/recibimiento-uvas', formData, {
+axios.post('/api/recibimiento-grape', formData, {
 headers: { Authorization: token },
 });
 ---------------------------
@@ -86,12 +86,12 @@ authorized: Checkbox for manager approval (label: "אישור מנהל")
 comments: Textarea for any special instructions (placeholder: "הודאות מיוחדות")
 
 API Endpoint:
-The form submission (handleSubmit function) attempts to send a POST request to the /api/vinedo-uvas endpoint. 
+The form submission (handleSubmit function) attempts to send a POST request to the /api/vinedo-grape endpoint. 
 HTTP Method: POST
 Request Body: The formData object will be converted to JSON and sent in the request body. This object contains all the user-entered data for the vineyard.
 Headers: The request might include an Authorization header containing the user's token for authentication (not explicitly shown in the provided code snippet).
 
-axios.post('/api/vinedo-uvas', formData, {
+axios.post('/api/vinedo-grape', formData, {
 headers: { Authorization: token },
 });
 -------------------------------------
@@ -111,8 +111,8 @@ localStorage.setItem('token', res.data.token);
 ----------------------------------------
 END POINTS DE LA PAGINA
 /api/entrada-fabrica: Este endpoint se utiliza para registrar la entrada de un producto en una fábrica.
-/api/recibimiento-uvas: Este endpoint se utiliza para registrar la recepción de uvas.
+/api/recibimiento-grape: Este endpoint se utiliza para registrar la recepción de grape.
 /api/laboratorio: Este endpoint se utiliza para registrar datos de laboratorio.
-/api/vinedo-uvas: Este endpoint se utiliza para registrar información sobre un viñedo y el envío de uvas.
+/api/vinedo-grape: Este endpoint se utiliza para registrar información sobre un viñedo y el envío de grape.
 /api/register: Este endpoint se utiliza para registrar nuevos usuarios.
 /api/login: Este endpoint se utiliza para la entrada de usuarios.

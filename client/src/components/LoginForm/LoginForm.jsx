@@ -17,19 +17,15 @@ const LoginForm = () => {
     localStorage.setItem('password', password);
 
     try {
-      const res = await axios.post('/api/auth/login', { username, password });
+      const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
       localStorage.setItem('token', res.data.token); 
       navigate('/'); 
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         alert(error.response.data.message || 'Login failed. Please check your credentials.');
       } else if (error.request) {
-        // The request was made but no response was received
         alert('No response received from server. Please try again.');
       } else {
-        // Something happened in setting up the request that triggered an Error
         alert('An error occurred during login.');
       }
       console.error('Login error:', error);

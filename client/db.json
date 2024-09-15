@@ -9,7 +9,7 @@
         "isAutomatic": false
       }
     ],
-    "recibimientoUvas": [
+    "recibimientoGrape": [
       {
         "id": 1,
         "shipmentNumber": 12345,
@@ -38,7 +38,7 @@
         "aromaProfile": "Fruity"
       }
     ],
-    "vinedoUvas": [
+    "vinedoGrape": [
       {
         "id": 1,
         "shipmentNumber": "12345",

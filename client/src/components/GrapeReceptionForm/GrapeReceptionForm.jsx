@@ -41,7 +41,7 @@ const GrapeReceptionForm = () => {
         return;
       }
       const token = localStorage.getItem('token');
-      await axios.post('/api/recibimiento-uvas', formData, {
+      await axios.post('/api/recibimiento-grape', formData, {
         headers: { Authorization: token },
       });
       alert('קבלה רשומה');
@@ -60,13 +60,14 @@ const GrapeReceptionForm = () => {
         { name: 'departureTime', label: 'יציאה מהעמדה', type: 'time' },
         { name: 'receivingTank', label: 'מיכל קבלה', type: 'text' },
       ].map((field) => (
-        <><label key={field.name} className={styles.label}>
+        <><label key={field.name} className={styles.label} htmlFor={field.name}>
           {field.label}
         </label>
         <input
           key={field.name}
           type={field.type}
           name={field.name}
+          id={field.name}
           placeholder={field.placeholder}
           value={formData[field.name]}
           onChange={handleChange}
@@ -88,8 +89,10 @@ className={styles.selectField}
 <option value="directToTank">ישירות</option>
 </select>
 
+      <label className={styles.label} htmlFor='comments'>הערות</label>
       <textarea
         name="comments"
+        id='comments'
         placeholder="הודאות מיוחדות"
         value={formData.comments}
         onChange={handleChange}

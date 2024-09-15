@@ -59,7 +59,7 @@ const VineyardForm = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('/api/vinedo-uvas', formData, {
+      await axios.post('/api/vinedo-grape', formData, {
         headers: { Authorization: token },
       });
       alert('רישום מוצלח');
@@ -89,10 +89,11 @@ const VineyardForm = () => {
         { name: 'shipmentDate', label: 'שעת משלוח', type: 'time' },
       ].map((field) => (
         <>
-        <label key={field.name} className={styles.label}>
+        <label key={field.name} className={styles.label} htmlFor={field.name}>
           {field.label}
         </label>
         <input
+        id={field.name}
           key={field.name}
           type={field.type}
           name={field.name}

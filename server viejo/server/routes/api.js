@@ -20,8 +20,8 @@ router.post('/entrada-fabrica', verifyToken, checkRole(1), async (req, res) => {
     }
 });
 
-// Ruta para el recibimiento de uvas y toma de temperatura (Rol 2)
-router.post('/recibimiento-uvas', verifyToken, checkRole(2), async (req, res) => {
+// Ruta para el recibimiento de grape y toma de temperatura (Rol 2)
+router.post('/recibimiento-grape', verifyToken, checkRole(2), async (req, res) => {
     const { vineyard, grapeType, temperature } = req.body;
     try {
         const entry = new Entry({ vineyard, grapeType, temperature });

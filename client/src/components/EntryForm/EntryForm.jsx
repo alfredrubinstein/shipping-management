@@ -74,10 +74,11 @@ const EntryForm = () => {
         { name: 'fullTruckWeight', label: 'משקל משאית מלאה', type: 'number' },
         { name: 'emptyTruckWeight', label: 'משקל משאית ריקה', type: 'number' },
       ].map((field) => (
-        <><label key={field.name} className={styles.label}>
+        <><label key={field.name} className={styles.label} htmlFor={field.name}>
           {field.label}
         </label>
         <input
+        id={field.name}
           key={field.name}
           type={field.type}
           name={field.name}

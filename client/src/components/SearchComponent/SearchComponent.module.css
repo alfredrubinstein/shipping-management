@@ -1,0 +1,81 @@
+.formContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    /* border-radius: 10px; */
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .formTitle{
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .searchForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+  }
+  
+  .inputGroup {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputField {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .searchButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .searchButton:hover {
+    background-color: #45a049;
+  }
+  
+  .resultsContainer {
+    margin-top: 30px;
+  }
+  
+  .resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .resultsTable th,
+  .resultsTable td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .resultsTable th {
+    background-color: #f2f2f2;
+  }
+  
+  @media (max-width: 768px) {
+    .searchForm {
+      flex-direction: column;
+    }
+  
+    .inputGroup {
+      flex: 1 1 100%;
+    }
+  }
+  

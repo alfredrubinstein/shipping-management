@@ -2,37 +2,39 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from '../forms.module.css';
+import style from './RegisterForm.module.css';
 
 const RegisterForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState('entryTypePermit');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
-      await axios.post('/api/auth/register', { username, password, role });
+      console.log('Attempting to register with:', { username, role });
+      const response = await axios.post('http://localhost:5000/api/auth/register', { username, password, role });
+      console.log('Registration response:', response.data);
       navigate('/login');
     } catch (error) {
+      console.error('Detailed registration error:', error);
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        alert(error.response.data.message || 'Registration failed. Please try again.');
+        setError(`Server Error: ${error.response.status} - ${error.response.data.message || 'Unknown error'}`);
       } else if (error.request) {
-        // The request was made but no response was received
-        alert('No response received from server. Please try again.');
+        setError('Network Error: No response received from server. Please check your connection.');
       } else {
-        // Something happened in setting up the request that triggered an Error
-        alert('An error occurred during registration.');
+        setError(`Request Error: ${error.message}`);
       }
-      console.error('Registration error:', error);
     }
   };
 
   return (
     <>
     <div className={styles.title}>רישום משתמש חדש</div>
+    {error && <div className={style.errorMessage}>{error}</div>}
     <form onSubmit={handleSubmit} className={styles.formContainer}> 
     <label htmlFor="username">שם משתמש:</label>
       <input

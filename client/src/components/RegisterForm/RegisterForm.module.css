@@ -1,0 +1,11 @@
+.errorMessage{
+    background-color: yellow;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}

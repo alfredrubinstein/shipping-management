@@ -36,7 +36,7 @@ const DriverForm = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('/api/chofer-uvas', formData, {
+      await axios.post('/api/chofer-grape', formData, {
         headers: { Authorization: token },
       });
       alert('Información registrada correctamente');
