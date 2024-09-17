@@ -1,3 +1,4 @@
+//forma original
 {
     "entradaFabrica": [
       {
@@ -101,3 +102,176 @@
     ]
   }
   
+
+
+
+
+
+
+
+
+
+  -------------------------------- 
+//recomendado por profe no pulido
+  "vineyard":{
+      //db de vinedo y el vineyardName sera el id
+      "vineyardName": "Vineyard A",
+      "vineyardArea": "Northern",
+      "vineyard": "Plot 5",
+      "contactPersonVineYard": "Mike Smith",
+  },
+  "truck":
+  {
+    //db de camion y el vehiclePlate sera el id
+    "vehiclePlate": "ABC123",
+    "conductor": "John Doe",
+    "driverPhone": "+972501234567",// forma vieja "contactNumber": "+972501234567"
+    "typeOfTruck": "Semi-trailer",
+    //agregar aqui peso comun vacio de este camion (opcional)
+  },
+  {
+    "shipment": 
+      {
+        "id": 1,
+        "shipmentNumber": "12345",//cambiar que shipmentNumber sea fecha y hora de creacion de la orden
+        "statusOfShipment": "UnauthorizedShipmentOfGrape",// "DirectorAuthorizedShipment","MashguiajAuthorizedShipment","ShippingWithAllAuthorizations", "ArrivedAtTheFactory", "GrapeUnloaded", "LaboratoryResponseReceived", 
+        "licensePlateNumber": "ABC123",--esto esta repetido borrarlo (ya existe "vehiclePlate")
+        "fullTruckWeight": 15000,
+        "emptyTruckWeight": 8000,
+        "IsAutomaticEntryAnnotations":false,
+        //forma vieja "isAutomatic": false,
+        "receivingTemperature": 22,
+        //forma vieja "temperature": 22,-nombre mas claro
+        "arrivalTime": "10:00",--cambiar a fecha y hora
+        "departureTime": "11:00",--cambiar a fecha y hora
+        "receivingTank": "B-11",
+        "sentBy": "pp1",
+        "comments": "Mixed quality",
+        "scrambled": false,
+        "rotten": false,
+        "sulfitAdded1": true,
+        "sulfitAdded2": false,
+        "ensimesAdded": true,
+        "ph": 3.5,
+        "sugarLevel": 25,
+        "acidityLevel": 6.0,
+        "alcoholContent": 12.5,
+        "colorIntensity": 8,
+        "aromaProfile": "Fruity",
+        //borrar peso de salida de vinedo
+        "totalWeight": 1000,
+        "harvestDate": "2023-09-10T08:00",
+        "shipmentDate": "2023-09-10T09:00",
+        "isManualHarvest": false,
+        "grapeVariety": "Merlot",
+        "isKosher": true,
+        "isAuthorized": true,
+        "comments": "No issues",
+        "vineyardName": "Vineyard A",//esto sera el id a vinedo
+        "containers": 5,
+        "vehiclePlate": "ABC123",//esto sera el id a camion
+      }
+    ,
+    "users": [
+      {
+        "id": 1,
+        "username": "admin",
+        "password": "admin",
+        "role": "admin"
+      }
+    ]
+  }
+  
+//tipo de analizis necesarios a partir de los datos
+  //calculo de pago a chofer
+  //calculo de pago a vinedo
+  //resultados de laboratorio por vinedo
+
+
+
+
+
+
+  ---------------------------------
+  //recomendado por profe y pulido
+  const mongoose = require('mongoose');
+
+// Vineyard Model
+const vineyardSchema = new mongoose.Schema({
+  _id: { type: String, alias: 'vineyardName' }, // vineyardName as the id
+  vineyardArea: String,
+  vineyard: String,
+  contactPersonVineYard: String
+});
+
+const Vineyard = mongoose.model('Vineyard', vineyardSchema);
+
+// Truck Model
+const truckSchema = new mongoose.Schema({
+  _id: { type: String, alias: 'vehiclePlate' }, // vehiclePlate as the id
+  conductor: String,
+  driverPhone: String,
+  typeOfTruck: String,
+  emptyWeight: Number // Optional: common empty weight of this truck type
+});
+
+const Truck = mongoose.model('Truck', truckSchema);
+
+// Shipment Model
+const shipmentSchema = new mongoose.Schema({
+  shipmentNumber: { type: Date, default: Date.now }, // Changed to date and time of creation
+  statusOfShipment: {
+    type: String,
+    enum: [
+      'UnauthorizedShipmentOfGrape',
+      'DirectorAuthorizedShipment',
+      'MashguiajAuthorizedShipment',
+      'ShippingWithAllAuthorizations',
+      'ArrivedAtTheFactory',
+      'GrapeUnloaded',
+      'LaboratoryResponseReceived'
+    ]
+  },
+  fullTruckWeight: Number,
+  IsAutomaticEntryAnnotations: Boolean,
+  receivingTemperature: Number,
+  arrivalTime: Date,
+  departureTime: Date,
+  receivingTank: String,
+  sentBy: String,
+  comments: String,
+  scrambled: Boolean,
+  rotten: Boolean,
+  sulfitAdded1: Boolean,
+  sulfitAdded2: Boolean,
+  ensimesAdded: Boolean,
+  ph: Number,
+  sugarLevel: Number,
+  acidityLevel: Number,
+  alcoholContent: Number,
+  colorIntensity: Number,
+  aromaProfile: String,
+  totalWeight: Number,
+  harvestDate: Date,
+  shipmentDate: Date,
+  isManualHarvest: Boolean,
+  grapeVariety: String,
+  isKosher: Boolean,
+  isAuthorized: Boolean,
+  vineyardName: { type: String, ref: 'Vineyard' }, // Reference to Vineyard
+  containers: Number,
+  vehiclePlate: { type: String, ref: 'Truck' } // Reference to Truck
+});
+
+const Shipment = mongoose.model('Shipment', shipmentSchema);
+
+// User Model
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+  role: String
+});
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = { Vineyard, Truck, Shipment, User };

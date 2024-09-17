@@ -69,25 +69,7 @@ const DriverForm = () => {
           required
         />
       ))}
-
-{/* <label className={styles.labelField}>אישור משגיח</label>
-      <input
-        type="checkbox"
-        name="kosher"
-        value={formData.authorized}
-        onChange={handleChange}
-        className={styles.labelField}
-      />
-
-<label className={styles.labelField}>אישור מנהל</label>
-      <input
-        type="checkbox"
-        name="authorized"
-        value={formData.authorized}
-        onChange={handleChange}
-        className={styles.labelField}
-      /> */}
-
+      
       <textarea
         name="comments"
         placeholder="הודאות מיוחדות"
