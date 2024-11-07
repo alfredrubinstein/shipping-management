@@ -21,6 +21,27 @@ const EntryForm = () => {
     addElement: state.addElement
   }));
 
+  // Control de puntos
+  const [dots, setDots] = useState('');
+  
+  useEffect(() => {
+    let dotInterval;
+    if (connectionStatus === 'מנסה להתחבר') {
+      dotInterval = setInterval(() => {
+        setDots(prev => {
+          if (prev.length < 3) {
+            return prev + '.';
+          } else {
+            return ''; // Reinicia los puntos después de 3
+          }
+        });
+      }, 500); // Actualiza cada medio segundo
+    }
+    
+    // Cleanup
+    return () => clearInterval(dotInterval);
+  }, [connectionStatus]);
+
   useEffect(() => {
     const fetchShipmentNumber = async () => {
       setConnectionStatus('מנסה להתחבר'); // Mensaje de "intentando conectar"
@@ -45,12 +66,13 @@ const EntryForm = () => {
         } catch (err) {
           const elapsed = Date.now() - start;
           if (elapsed >= 5000) { // Verifica si han pasado 5 segundos
+            const fallbackShipmentNumber = new Date().toLocaleString(); // Obtener la fecha y hora actual
             setConnectionStatus('החיבור נכשל');
             setFormData(prevState => ({
               ...prevState,
               entradaFabrica: {
                 ...prevState.entradaFabrica,
-                shipmentNumber: '000000'
+                shipmentNumber: fallbackShipmentNumber // Usar la fecha y hora si no se recibe respuesta
               }
             }));
             clearInterval(interval); // Terminar el intento después de 5 segundos
@@ -128,8 +150,8 @@ const EntryForm = () => {
   };
 
   return (
-      <form className={isAutomatic ? styles.automaticForm : styles.formContainer} onSubmit={handleSubmit}>
-<div className={style.toggleContainer}>
+    <form className={isAutomatic ? styles.automaticForm : styles.formContainer} onSubmit={handleSubmit}>
+      <div className={style.toggleContainer}>
         <label className={style.toggleLabel}>
           {isAutomatic ? 'מערכת על אוטומט' : 'מערכת מופעלת באופן ידני'}
         </label>
@@ -148,7 +170,7 @@ const EntryForm = () => {
         name="shipmentNumber"
         value={
           isAutomatic
-            ? connectionStatus || formData.entradaFabrica.shipmentNumber
+            ? `${connectionStatus}${dots}` || formData.entradaFabrica.shipmentNumber
             : formData.entradaFabrica.shipmentNumber
         }
         onChange={handleChange}
@@ -157,7 +179,7 @@ const EntryForm = () => {
         disabled={isAutomatic}
       />
       
-      {[
+      {[ 
         { name: 'licensePlateNumber', label: 'מספר רישוי משאית', type: 'text' },
         { name: 'fullTruckWeight', label: 'משקל משאית מלאה', type: 'number' },
         { name: 'emptyTruckWeight', label: 'משקל משאית ריקה', type: 'number' },
@@ -178,8 +200,6 @@ const EntryForm = () => {
           />
         </React.Fragment>
       ))}
-      
-
 
       <button type="button" className={styles.newTabButton} onClick={handleOnClick}>
         פתח כרטיסיה חדשה

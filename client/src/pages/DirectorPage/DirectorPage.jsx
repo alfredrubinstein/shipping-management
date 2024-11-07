@@ -19,6 +19,10 @@ const DirectorPage = () => {
         <button onClick={handleShowRegisterForm} className={styles.button}>
           רישום משתמש
         </button>
+        {/* agregar aqui el onClick */}
+        <button className={styles.button}>
+          שליחת הודאות
+        </button>
       </div>
 
       {activeComponent === 'register' && <RegisterForm />}

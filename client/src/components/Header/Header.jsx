@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -6,12 +6,31 @@ import { GiHamburgerMenu } from "react-icons/gi";
 const Header = () => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    const menuRef = useRef(null);
+    const hamburgerRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (open && 
+                menuRef.current && 
+                !menuRef.current.contains(event.target) &&
+                !hamburgerRef.current.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [open]);
 
     const handleLogoutMobile = () => {
         localStorage.removeItem('token');
-        setOpen(!open);
+        setOpen(false);
         navigate('/login');
     };
+
     const handleLogoutComputer = () => {
         localStorage.removeItem('token');
         navigate('/login');
@@ -28,26 +47,35 @@ const Header = () => {
         {to: '/entrada', text: 'כניסה ליקב'},
         {to: '/recibimiento', text: 'קבלת ענבים'},
         {to: '/laboratorio', text: 'מעבדה'},
-        // {to: '/driver', text: 'מערכת נהגים'},
         {to: '/vineyard', text: 'מערכת כרם'},
         {to: '/director', text: 'מערכת מנהל'},
-        // {to: '/vinologo', text: 'מערכת ייננים'},
         {to: '/general', text: 'הודעות'}
     ];
 
     return (
         <>
             {/* Icono de hamburguesa para móviles */}
-            <div className={styles.mobileHeader} onClick={handleOpen}>
+            <div 
+                className={styles.mobileHeader} 
+                onClick={handleOpen}
+                ref={hamburgerRef}
+            >
                 <GiHamburgerMenu />
             </div>
 
             {/* Menú desplegable para móviles */}
-            <div className={`${styles.mobileMenu} ${open ? styles.open : styles.close}`}>
+            <div 
+                className={`${styles.mobileMenu} ${open ? styles.open : styles.close}`}
+                ref={menuRef}
+            >
                 <ul className={styles.navList}>
                     {linkList.map((link, index) => (
                         <li key={index}>
-                            <Link className={path === link.to ? styles.active : styles.navItem} to={link.to} onClick={handleOpen}>
+                            <Link 
+                                className={path === link.to ? styles.active : styles.navItem} 
+                                to={link.to} 
+                                onClick={() => setOpen(false)}
+                            >
                                 {link.text}
                             </Link>
                         </li>
@@ -61,10 +89,12 @@ const Header = () => {
                 <ul className={styles.navList}>
                     {linkList.map((link, index) => (
                         <li key={index}>
-                            <Link className={path === link.to ? styles.active : styles.navItem} to={link.to}>
+                            <Link 
+                                className={path === link.to ? styles.active : styles.navItem} 
+                                to={link.to}
+                            >
                                 {link.text}
                             </Link>
-                            {/* <div className={styles.separador}>aaa</div> */}
                         </li>
                     ))}
                     <li><button className={styles.logoutButton} onClick={handleLogoutComputer}>Logout</button></li>
