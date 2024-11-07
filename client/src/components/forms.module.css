@@ -3,10 +3,21 @@
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 3px solid #000000;
     border-radius: 10px;
-    background-color: #000138;
-    color: white;
+    /* fondo de todo los forms */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    text-align: right;
+}
+.automaticForm{
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    background-color: #feffb5;
+    color: rgb(0, 0, 0);
     text-align: right;
 }
 
@@ -74,6 +85,10 @@
     cursor: pointer;
     margin-bottom: 10px;
 }
+.newTabButton:hover{
+    background-color: #a7a6a6;
+    color: white;
+}
 .labelField{
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -83,5 +98,9 @@
     .formContainer {
         margin: 20px;
         padding: 15px;
+    }
+    .automaticForm{
+        margin: 20px;
+        padding: 15px;     
     }
 }

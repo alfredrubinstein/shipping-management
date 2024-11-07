@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Director.module.css';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import SearchComponent from '../../components/SearchComponent/SearchComponent';
 
+const DirectorPage = () => {
+  const [activeComponent, setActiveComponent] = useState(null); // Estado para controlar el componente activo
 
- const DirectorPage = () => {
-
-  //  const handleAddUser = () => {
-//     console.log('add user');
-//   }
-//   const handleOpenSearch = () => {
-//     console.log('open search');
-//   }
-
+  const handleShowRegisterForm = () => setActiveComponent('register');
+  const handleShowSearchComponent = () => setActiveComponent('search');
 
   return (
-    <>
     <div className={styles.container}>
       <h1 className={styles.title}>מערכת מנהל 👮‍♂️</h1>
-      {/* <button onClick={handleAddUser}>רשום משתמש חדש</button>
-      <button onClick={handleOpenSearch}>חיפוש משלוחים</button>   */}
-        <RegisterForm/>
-    <SearchComponent/>
+      <div className={styles.buttonContainer}>
+        <button onClick={handleShowSearchComponent} className={styles.button}>
+          חיפושים מתקדמים
+        </button>
+        <button onClick={handleShowRegisterForm} className={styles.button}>
+          רישום משתמש
+        </button>
       </div>
-    </>
+
+      {activeComponent === 'register' && <RegisterForm />}
+      {activeComponent === 'search' && <SearchComponent />}
+    
+    </div>
   );
 };
 

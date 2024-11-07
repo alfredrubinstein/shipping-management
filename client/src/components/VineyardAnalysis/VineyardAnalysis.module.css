@@ -1,0 +1,91 @@
+.container {
+    padding: 1rem;
+    background-color: #6b91de;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .buttonBlue {
+    background-color: #3b82f6;
+  }
+  
+  .buttonBlue:hover {
+    background-color: #2563eb;
+  }
+  
+  .buttonGreen {
+    background-color: #10b981;
+  }
+  
+  .buttonGreen:hover {
+    background-color: #059669;
+  }
+  
+  .buttonPurple {
+    background-color: #8b5cf6;
+  }
+  
+  .buttonPurple:hover {
+    background-color: #7c3aed;
+  }
+  
+  .result {
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableHeader {
+    background-color: #e5e7eb;
+  }
+  
+  .tableCell {
+    border: 1px solid #d1d5db;
+    padding: 0.5rem;
+  }
+  
+  .tableRow:nth-child(even) {
+    background-color: #f9fafb;
+  }
